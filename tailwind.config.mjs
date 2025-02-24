@@ -10,6 +10,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "#F1C152",
+        darkBg: "#1E2125"
+      },
+      fontFamily: {
+        bangla: ["Noto Sans Bengali", "Hind Siliguri", "sans-serif"],
       },
     },
   },
