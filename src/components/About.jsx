@@ -12,16 +12,16 @@ const About = () => {
   let darkMode = useSelector((state) => state.theme.darkMode);
   return (
     <div>
-      <Container className={` flex flex-col-reverse gap-y-10 xl:flex-row gap-x-6 items-center py-12`} >
+      <Container className={` flex flex-col-reverse gap-y-10 xl:flex-row gap-x-6 items-center py-6 md:py-12`} >
         <div className="gallery w-full xl:w-1/2  gap-2 gap-y-5 grid grid-cols-2 grid-rows-2 xl:!aspect-square ">
           <div className="first col-span-1 row-span-2 !aspect-[1/2.05]  ">
-            <Image src={first}  className="w-full h-full object-cover" />
+            <Image src={first} alt="first image" className="w-full h-full object-cover" />
           </div>
           <div className="second col-span-1 row-span-1  aspect-square">
-            <Image src={second} className="w-full h-full object-cover" />
+            <Image src={second} alt="second image" className="w-full h-full object-cover" />
           </div>
           <div className="third col-span-1 row-span-1  aspect-square">
-            <Image src={third}  className="w-full h-full object-cover"/>
+            <Image src={third} alt="third image" className="w-full h-full object-cover"/>
           </div>
         </div>
         <div className="main xl:w-1/2 flex flex-col gap-y-3 md:gap-y-3.5">
