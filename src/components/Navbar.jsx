@@ -32,7 +32,7 @@ const Navbar = () => {
     <nav className="absolute top-0 bg-white/30 sm:bg-white/15 backdrop-blur-sm w-full z-20 ">
       <Container className="">
         <div className="flex items-center justify-between py-2">
-          <div className="logo w-9 sm:w-14 aspect-square ">
+          <div className="logo w-10 sm:w-14 aspect-square ">
             <Image className="w-full h-full" src={logo} alt={logo} />
           </div>
           <ul

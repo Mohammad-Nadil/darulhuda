@@ -33,7 +33,10 @@ const Activities = () => {
     },
     {
       icon: <FaSchool />,
-      title: { english: "Special Najera Section", bangla: "বিশেষ নাজেরা বিভাগ" },
+      title: {
+        english: "Special Najera Section",
+        bangla: "বিশেষ নাজেরা বিভাগ",
+      },
       description: {
         english: "Advanced Quran recitation for selected students.",
         bangla: "নির্বাচিত শিক্ষার্থীদের জন্য উন্নত কুরআন তেলাওয়াত।",
@@ -49,7 +52,10 @@ const Activities = () => {
     },
     {
       icon: <FaUsers />,
-      title: { english: "Adult Islamic Education", bangla: "প্রাপ্তবয়স্কদের ইসলামিক শিক্ষা" },
+      title: {
+        english: "Adult Islamic Education",
+        bangla: "প্রাপ্তবয়স্কদের ইসলামিক শিক্ষা",
+      },
       description: {
         english: "Special classes for adults to learn Islam.",
         bangla: "প্রাপ্তবয়স্কদের জন্য ইসলাম শিক্ষার বিশেষ ক্লাস।",
@@ -68,7 +74,7 @@ const Activities = () => {
   return (
     <div>
       <Container
-        className={` flex flex-col items-center justify-center gap-y-2 md:gap-y-6 pt-32`}
+        className={` flex flex-col items-center justify-center gap-y-2 md:gap-y-6 pt-20 md:pt-24 lg:pt-32`}
       >
         <p className="text-xl text-primary font-medium">
           {english ? "Activities" : "কার্যক্রম"}
@@ -92,7 +98,9 @@ const Activities = () => {
                   : "bg-white text-black shadow-[0px_0px_50px_0px_rgba(0,0,0,0.15)]"
               }`}
             >
-              <div className="icon text-4xl md:text-5xl xl:text-7xl">{item.icon}</div>
+              <div className="icon text-4xl md:text-5xl xl:text-7xl">
+                {item.icon}
+              </div>
               <div className="info flex flex-col gap-y-2 sm:gap-y-3 lg:gap-y-5">
                 <div className="top flex flex-col gap-y-1 md:gap-y-2">
                   <h2
@@ -104,7 +112,7 @@ const Activities = () => {
                   </h2>
                   <p
                     className={`description text-xs lg:text-base font-medium ${
-                      darkMode ? "text-white " : "text-black"
+                      darkMode ? "text-white/70 " : "text-black/70"
                     }`}
                   >
                     {english

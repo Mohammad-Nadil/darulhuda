@@ -33,7 +33,7 @@ const About = () => {
               ? "History of Madrasa-e-Darul Huda"
               : "মাদ্রাসা-ই-দারুল হুদার ইতিহাস"}
           </p>
-          <h2 className={`md:leading-7 !m-0 ${darkMode ? "text-white " : "text-black"} `} >
+          <h2 className={`md:leading-7 !m-0 ${darkMode ? "text-white/70 " : "text-black/70"} `} >
             {english
               ? `Madrasa-e-Darul Huda was established with the mission to provide quality Islamic education to students, enabling them to gain knowledge that will help them in both their spiritual and worldly lives. Founded in the early years of the 21st century, the madrasa has grown to become one of the most respected and recognized institutions in the region.
 

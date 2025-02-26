@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import About from "@/components/About";
 import Extra from "@/components/Extra";
 import Activities from "@/components/Activities";
+import Events from "@/components/Events";
 
 export default function Home() {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -22,10 +23,11 @@ export default function Home() {
       <About/>
       <Extra/>
       <Activities/>
+      <Events/>
 
       <button
         onClick={() => dispatch(toggleTheme())}
-        className={`p-2 rounded border ${
+        className={`p-2 rounded border  ${
           darkMode ? "bg-black text-white" : "bg-white text-black"
         }`}
       >
