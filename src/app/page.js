@@ -6,6 +6,7 @@ import { setEnglish } from "../features/language/languageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import About from "@/components/About";
 import Extra from "@/components/Extra";
+import Activities from "@/components/Activities";
 
 export default function Home() {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -20,6 +21,7 @@ export default function Home() {
       <Banner />
       <About/>
       <Extra/>
+      <Activities/>
 
       <button
         onClick={() => dispatch(toggleTheme())}

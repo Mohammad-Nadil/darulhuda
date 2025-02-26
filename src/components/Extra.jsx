@@ -7,7 +7,7 @@ const Extra = () => {
   let english = useSelector((state) => state.language.english);
   return (
     <Container className="">
-      <div className="w-full h-full py-2 sm:py-6 lg:py-12 px-3 sm:px-5 lg:px-14 bg-primary flex flex-col sm:flex-row justify-between items-center gap-y-4">
+      <div className="w-full h-full py-2 sm:py-6 lg:py-12 px-3 sm:px-5 lg:px-14 bg-primary flex flex-col sm:flex-row justify-between items-center gap-y-4 rounded-sm md:rounded-md">
         <div className="left  w-11/12 sm:w-2/3 flex gap-x-5 lg:gap-x-8 items-center">
           <div className={`icon text-white text-5xl md:text-8xl`}>
             <FaMosque />
@@ -19,7 +19,10 @@ const Extra = () => {
           </p>
         </div>
         <div className="right sm:w-1/3 flex justify-end">
-          <button className="bg-white  font-semibold text-lg px-3 sm:px-4 md:px-9  py-1.5 sm:py-3 md:py-4 hover:scale-110 duration-300" > {english ? " Learn More" : " আরো পড়ুন "}</button>
+          <button className="bg-white  font-semibold text-lg px-3 sm:px-4 md:px-9  py-1.5 sm:py-3 md:py-4 hover:scale-110 duration-300">
+            
+            {english ? " Learn More" : " আরো পড়ুন "}
+          </button>
         </div>
       </div>
     </Container>
