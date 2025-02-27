@@ -1,160 +1,235 @@
-"use client";
 import React from "react";
-import Container from "./layer/Container";
 import { useSelector } from "react-redux";
-import { Image } from "antd";
-import { FaDownload } from "react-icons/fa";
+import Container from "./layer/Container";
+import Image from "next/image";
+import event from "../assets/events.png";
+import Slider from "react-slick";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+
+function SampleNextArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <div
+      className={`absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2  md:text-3xl bg-primary p-0.5 md:p-2 rounded-full cursor-pointer z-50 ${className}`}
+      onClick={onClick}
+    >
+      <FaAngleRight />
+    </div>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <div
+      className={`absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2  md:text-3xl bg-primary p-0.5 md:p-2 rounded-full cursor-pointer z-50 ${className}`}
+      onClick={onClick}
+    >
+      <FaAngleLeft />
+    </div>
+  );
+}
 
 const Events = () => {
-  let english = useSelector((state) => state.language.english);
   let darkMode = useSelector((state) => state.theme.darkMode);
-  let events = [
+  let english = useSelector((state) => state.language.english);
+
+  const events = [
     {
-      date: "01 Jan 2045",
-      time: "Sat 08:00 am",
-      title: { english: "Final exam", bangla: "ফাইনাল পরীক্ষা" },
+      title: { english: "Graduation Ceremony", bangla: "পাগড়ি অনুষ্ঠান" },
       description: {
         english:
-          "The final exam will be held as scheduled. Ensure your preparations are complete before the exam.",
+          "Our madrasa's Pagri Ceremony is a special event where students are honored for completing their Islamic education.",
         bangla:
-          "ফাইনাল পরীক্ষা নির্ধারিত সময়ে অনুষ্ঠিত হবে। পরীক্ষা আগে আপনার প্রস্তুতি সম্পূর্ণ নিশ্চিত করুন।",
+          "আমাদের মাদ্রাসার পাগড়ি অনুষ্ঠান একটি বিশেষ আয়োজন, যেখানে ছাত্রদের ইসলামিক শিক্ষা সমাপ্তির জন্য সম্মানিত করা হয়।",
       },
-      imgSrc: "/images/routine.jpg",
+      image: "/images/graduation.jpg",
     },
     {
-      date: "10 Jan 2045",
-      time: "Mon 10:00 am",
-      title: { english: "Mid-term exam", bangla: "মিড-টার্ম পরীক্ষা" },
+      title: {
+        english: "Annual Islamic Conference",
+        bangla: "বার্ষিক ইসলামিক সম্মেলন",
+      },
       description: {
         english:
-          "Prepare well for your mid-term exam. Review all topics covered in class.",
+          "An enlightening gathering where scholars share their knowledge and inspire students and the community.",
         bangla:
-          "মিড-টার্ম পরীক্ষার জন্য ভালোভাবে প্রস্তুতি নিন। ক্লাসে আলোচনা করা সমস্ত বিষয় পুনরায় পড়ুন।",
+          "একটি জ্ঞানবর্ধক সমাবেশ যেখানে স্কলাররা তাদের জ্ঞান শেয়ার করেন এবং ছাত্র ও সম্প্রদায়কে অনুপ্রাণিত করেন।",
       },
-      imgSrc: "/images/routine.jpg",
+      image: "/images/conference.jpg",
     },
     {
-      date: "15 Jan 2045",
-      time: "Wed 02:00 pm",
-      title: { english: "Islamic Quiz", bangla: "ইসলামিক কুইজ" },
+      title: {
+        english: "Quran Recitation Competition",
+        bangla: "কুরআন তেলাওয়াত প্রতিযোগিতা",
+      },
       description: {
         english:
-          "Join our Islamic Quiz event to test your knowledge. Prizes await the winners!",
+          "A competition where students showcase their beautiful recitation of the Holy Quran.",
         bangla:
-          "আমাদের ইসলামিক কুইজ ইভেন্টে অংশগ্রহণ করুন আপনার জ্ঞান পরীক্ষা করার জন্য। বিজয়ীদের জন্য পুরষ্কার রয়েছে!",
+          "একটি প্রতিযোগিতা যেখানে ছাত্ররা পবিত্র কুরআনের সুন্দর তেলাওয়াত উপস্থাপন করে।",
       },
-      imgSrc: "/images/routine.jpg",
+      image: "/images/quran.jpg",
     },
     {
-      date: "20 Jan 2045",
-      time: "Fri 04:00 pm",
-      title: { english: "Sermon Session", bangla: "খুৎবা সেশন" },
+      title: {
+        english: "Islamic Knowledge Quiz",
+        bangla: "ইসলামিক জ্ঞান কুইজ",
+      },
       description: {
         english:
-          "Attend the sermon session by our esteemed scholar. The topic will be about the importance of prayer.",
+          "A quiz competition to test students' knowledge about Islamic history, teachings, and values.",
         bangla:
-          "আমাদের সম্মানিত আলেম দ্বারা খুৎবা সেশনে অংশগ্রহণ করুন। বিষয়টি হবে নামাজের গুরুত্ব সম্পর্কে।",
+          "একটি কুইজ প্রতিযোগিতা যেখানে ছাত্রদের ইসলামিক ইতিহাস, শিক্ষা ও মূল্যবোধ সম্পর্কে জ্ঞান পরীক্ষা করা হয়।",
       },
-      imgSrc: "/images/routine.jpg",
+      image: "/images/quiz.jpg",
     },
     {
-      date: "30 Jan 2045",
-      time: "Tue 06:30 pm",
-      title: { english: "Community Gathering", bangla: "কমিউনিটি গ্যাদারিং" },
+      title: { english: "Eid Celebration", bangla: "ঈদ উদযাপন" },
       description: {
         english:
-          "Join us for a community gathering. Meet new people and engage in meaningful discussions.",
+          "A joyous celebration with prayers, feasts, and community gatherings to mark the blessed occasion of Eid.",
         bangla:
-          "আমাদের কমিউনিটি গ্যাদারিংয়ে যোগ দিন। নতুন মানুষদের সাথে পরিচিত হোন এবং অর্থপূর্ণ আলোচনায় অংশগ্রহণ করুন।",
+          "একটি আনন্দঘন উদযাপন যেখানে নামাজ, ভোজ এবং সম্প্রদায়ের একত্রিত হওয়ার মাধ্যমে ঈদের পবিত্র দিন পালন করা হয়।",
       },
-      imgSrc: "/images/routine.jpg",
+      image: "/images/eid.jpg",
+    },
+    {
+      title: {
+        english: "Charity and Food Distribution",
+        bangla: "দান ও খাদ্য বিতরণ",
+      },
+      description: {
+        english:
+          "A noble initiative where students and staff come together to help those in need by distributing food and essentials.",
+        bangla:
+          "একটি মহৎ উদ্যোগ যেখানে ছাত্র ও স্টাফ একত্রিত হয়ে দুস্থদের সাহায্য করতে খাদ্য ও প্রয়োজনীয় সামগ্রী বিতরণ করে।",
+      },
+      image: "/images/charity.jpg",
+    },
+    {
+      title: {
+        english: "Hadith Learning Session",
+        bangla: "হাদীস শিক্ষার সেশন",
+      },
+      description: {
+        english:
+          "A session dedicated to learning and understanding the sayings and teachings of Prophet Muhammad (PBUH).",
+        bangla:
+          "একটি সেশন যেখানে রাসূল (সাঃ) এর হাদীস ও শিক্ষা সম্পর্কে শেখানো ও বোঝানো হয়।",
+      },
+      image: "/images/hadith.jpg",
+    },
+    {
+      title: { english: "Annual Sports Day", bangla: "বার্ষিক ক্রীড়া দিবস" },
+      description: {
+        english:
+          "A day filled with sports activities promoting physical fitness, teamwork, and discipline among students.",
+        bangla:
+          "একটি দিন যেখানে ক্রীড়া কার্যক্রমের মাধ্যমে ছাত্রদের শারীরিক ফিটনেস, দলগত কাজ ও শৃঙ্খলা উন্নত করা হয়।",
+      },
+      image: "/images/sports.jpg",
     },
   ];
+
+  var settings = {
+    dots: false,
+    infinite: true,
+    autoplay: true,
+    speed: 1000,
+    autoplaySpeed: 5000,
+    cssEase: "linear",
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    autoplay: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1050,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 415,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <div>
-      <Container className={` pt-20 md:pt-24 lg:pt-32 flex flex-col gap-y-5`}>
-        <h2
-          className={`heading text-3xl md:text-6xl flex gap-x-2 md:gap-x-5 ${
+      <Container
+        className={` pt-20 md:pt-24 lg:pt-32 flex flex-col gap-y-3 sm:gap-y-6  `}
+      >
+        <h2 className="heading text-primary text-lg sm:text-xl font-semibold text-center">
+          {english ? "Programs & Events" : "মাদ্রাসার অনুষ্ঠানসমূহ"}
+        </h2>
+        <p
+          className={`title text-center font-medium text-2xl sm:text-3xl md:text-4xl xl:text-5xl leading-tight sm:w-9/12 mx-auto ${
             darkMode ? "text-white" : "text-black"
           }`}
         >
-          <p>{english ? "Upcoming " : "আসন্ন "}</p>
-          <p className="text-primary">
-            {english ? " Events" : " অনুষ্ঠানসমূহ"}
-          </p>
-        </h2>
-        <div className="main flex flex-col gap-y-10">
-          {events.map((event, index) => (
-            <div className="card flex flex-col sm:flex-row ">
-              <div className="sm:w-1/6 text-sm lg:text-base xl:text-lg">
+          {english
+            ? "Here are the various events and programs held at our madrasa."
+            : "এখানে আমাদের মাদ্রাসায় অনুষ্ঠিত বিভিন্ন অনুষ্ঠান ও কার্যক্রম রয়েছে।"}
+        </p>
+
+        <div className="main gap-2 xl:gap-4 px-2 md:px-5">
+          <div className="slider-container ">
+            <Slider {...settings}>
+              {events.map((item, index) => (
                 <div
-                  className={`time&date w-full sm:border-b pb-4 px-4 ${
-                    darkMode ? "border-white/70" : "border-black/70"
-                  }`}
+                  key={index}
+                  className=" p-1 sm:p-2 xl:p-3 my-5 !aspect-[415/500] "
                 >
-                  <p
-                    className={`date font-medium text-nowrap ${
-                      darkMode ? "text-white" : "text-black"
-                    }`}
-                  >
-                    {event.date}
-                  </p>
                   <div
-                    className={`time  text-nowrap  ${
-                      darkMode ? "text-white/70" : "text-black/70"
+                    className={`card p-3 !pb-2 md:p-4 lg:p-6 h-full  rounded-md duration-300 flex flex-col gap-y-5 cursor-pointer  ${
+                      darkMode
+                        ? " bg-black hover:shadow-[0px_0px_70px_2px_rgba(255,255,255,0.1)]"
+                        : "hover:shadow-[0px_0px_50px_0px_rgba(0,0,0,0.15)] border hover:border-transparent"
                     }`}
                   >
-                    {event.time}
+                    <div className="image w-full aspect-[368/267] relative bg-gray-500">
+                      <Image
+                        className="w-full h-full object-contain"
+                        src={event}
+                        alt="event img"
+                        layout="fill"
+                        objectFit="contain"
+                      />
+                    </div>
+                    <div className="text flex flex-col gap-y-3 lg:gap-y-6 overflow-auto scrollbar-hide">
+                      <p
+                        className={`title md:text-xl font-semibold ${
+                          darkMode ? "text-white" : "text-black"
+                        }`}
+                      >
+                        {english ? item.title.english : item.title.bangla}
+                      </p>
+                      <h2
+                        className={`description text-sm lg:text-base ${
+                          darkMode ? "text-white/70" : "text-black/70"
+                        }`}
+                      >
+                        {english
+                          ? item.description.english
+                          : item.description.bangla}
+                      </h2>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className={` sm:w-5/6 contend flex justify-between px-0.5 sm:px-0 border-b sm:border-l pb-2 sm:pb-5 ${darkMode ? "border-white/70" : "border-black/70"}`}>
-                <div
-                  className={`details w-3/4 sm:w-[87%] flex flex-col gap-y-1 sm:gap-y-4 sm:px-5  ${
-                    darkMode
-                      ? "text-white border-white/70"
-                      : "text-black border-black/70"
-                  } `}
-                >
-                  <p className={`title text-xl sm:text-2xl lg:text-3xl`}>
-                    {english ? event.title.english : event.title.bangla}
-                  </p>
-                  <p
-                    className={`description text-xs sm:text-base lg:text-xl ${
-                      darkMode ? "text-white/70" : "text-black/70"
-                    }`}
-                  >
-                    {english
-                      ? event.description.english
-                      : event.description.bangla}
-                  </p>
-                </div>
-                <div
-                  className={`img w-1/4 sm:w-[13%]  relative ${
-                    darkMode ? "border-white/70" : "border-black/70"
-                  }`}
-                >
-                  <Image
-                    className="aspect-[1/1.4] object-contain"
-                    src={event.imgSrc}
-                    alt="Event Image"
-                  />
-                  <button
-                    className="absolute right-full top-0 sm:-translate-x-1/4 text-xs  bg-blue-500 text-white p-2 rounded-full hover:bg-blue-700 transition-all"
-                    onClick={() => {
-                      const link = document.createElement("a");
-                      const fileName = link.href.split("/").pop();
-                      link.href = event.imgSrc;
-                      link.download = fileName;
-                      link.click();
-                    }}
-                  >
-                    <FaDownload />
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+              ))}
+            </Slider>
+          </div>
         </div>
       </Container>
     </div>

@@ -8,6 +8,9 @@ import About from "@/components/About";
 import Extra from "@/components/Extra";
 import Activities from "@/components/Activities";
 import Events from "@/components/Events";
+import Announcements from "@/components/Announcements";
+import Blog from "@/components/Blog";
+import Teacher from "@/components/Teacher";
 
 export default function Home() {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -23,7 +26,13 @@ export default function Home() {
       <About/>
       <Extra/>
       <Activities/>
+      <Announcements/>
       <Events/>
+      <Blog/>
+      <Teacher/>
+
+
+
 
       <button
         onClick={() => dispatch(toggleTheme())}

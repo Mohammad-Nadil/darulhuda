@@ -16,7 +16,9 @@ export default function RootLayout({ children }) {
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
           />
         </head>
-        <body className={` overflow-x-hidden antialiased  font-bangla`}>{children}</body>
+        <body className={` overflow-x-hidden antialiased  font-bangla`}>
+          {children}
+        </body>
       </html>
     </ReduxProvider>
   );

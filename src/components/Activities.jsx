@@ -92,10 +92,10 @@ const Activities = () => {
           {items.map((item, index) => (
             <div
               key={index}
-              className={`card flex items-center gap-x-3 lg:gap-x-6 py-3 md:py-5 xl:py-9 px-3 lg:px-6 rounded md:rounded-lg ${
+              className={`card flex items-center gap-x-3 lg:gap-x-6 py-3 md:py-5 xl:py-9 px-3 lg:px-6 rounded md:rounded-lg duration-300 ${
                 darkMode
-                  ? "bg-black text-white shadow-[0px_0px_50px_1px_rgba(255,255,255,0.1)]"
-                  : "bg-white text-black shadow-[0px_0px_50px_0px_rgba(0,0,0,0.15)]"
+                  ? "bg-black text-white hover:shadow-[0px_0px_70px_2px_rgba(255,255,255,0.1)] "
+                  : "bg-white text-black hover:shadow-[0px_0px_50px_0px_rgba(0,0,0,0.15)] border hover:border-transparent"
               }`}
             >
               <div className="icon text-4xl md:text-5xl xl:text-7xl">
