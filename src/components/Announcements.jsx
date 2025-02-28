@@ -74,7 +74,7 @@ const Announcements = () => {
     <div>
       <Container className={` pt-20 md:pt-24 lg:pt-32 flex flex-col gap-y-6`}>
         <div
-          className={`heading text-3xl md:text-6xl flex gap-x-2 md:gap-x-5 ${
+          className={`heading text-2xl sm:text-3xl md:text-6xl flex gap-x-2 md:gap-x-5 ${
             darkMode ? "text-white" : "text-black"
           }`}
         >

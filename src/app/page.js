@@ -11,6 +11,7 @@ import Events from "@/components/Events";
 import Announcements from "@/components/Announcements";
 import Blog from "@/components/Blog";
 import Teacher from "@/components/Teacher";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -30,26 +31,7 @@ export default function Home() {
       <Events/>
       <Blog/>
       <Teacher/>
-
-
-
-
-      <button
-        onClick={() => dispatch(toggleTheme())}
-        className={`p-2 rounded border  ${
-          darkMode ? "bg-black text-white" : "bg-white text-black"
-        }`}
-      >
-        {darkMode ? "Light Mode" : "Dark Mode"}
-      </button>
-      <button
-        onClick={() => dispatch(setEnglish())}
-        className={`p-2 border rounded ${
-          darkMode ? "bg-black text-white" : "bg-white text-black"
-        }`}
-      >
-        {english ? "Switch to Bengali" : "Switch to English"}
-      </button>
+      <Footer/>
     </div>
   );
 }
