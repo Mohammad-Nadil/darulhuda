@@ -8,6 +8,7 @@ import { IoMenu } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "@/features/theme/themeSlice";
 import { setEnglish } from "../features/language/languageSlice";
+import { FaGear } from "react-icons/fa6";
 
 const Li = ({ liText, className }) => {
   return (
@@ -24,6 +25,7 @@ const Navbar = () => {
   let darkMode = useSelector((state) => state.theme.darkMode);
   const dispatch = useDispatch();
   let [show, setShow] = useState(false);
+  let [settings, setSettings] = useState(false);
   let menus = [
     { english: "Home", bangla: "হোম" },
     { english: "About", bangla: "পরিচিতি" },
@@ -51,27 +53,27 @@ const Navbar = () => {
               <p>English</p>
               <button
                 onClick={() => dispatch(setEnglish())}
-                className="body w-10 aspect-[2/1] rounded-full bg-gray-300 relative z-40"
+                className="body w-11 aspect-[2/1] rounded-full bg-gray-300 relative z-40"
               >
                 <div
-                  className={`button aspect-square z-50 border-2 border-gray-300 absolute top-1/2 -translate-y-1/2 h-full bg-white rounded-full duration-300 ${
+                  className={`button aspect-square z-50 border-[3px]  border-gray-300 absolute top-1/2 -translate-y-1/2 h-full  rounded-full duration-300 ${
                     english
-                      ? "bg-green-500 right-0"
+                      ? "bg-primary right-0"
                       : "bg-gray-400 right-full translate-x-full"
                   }`}
                 ></div>
               </button>
             </div>
-            <div className="darkMode flex sm:hidden items-center gap-x-2 ">
+            <div className="darkMode text-nowrap flex sm:hidden items-center gap-x-2 ">
               <p>Dark Mode</p>
               <button
                 onClick={() => dispatch(toggleTheme())}
-                className="body w-10 aspect-[2/1] rounded-full bg-gray-300 relative z-40"
+                className="body w-11 aspect-[2/1] rounded-full bg-gray-300 relative z-40"
               >
-                <div
-                  className={`button aspect-square z-50 border-2 border-gray-300 absolute top-1/2 -translate-y-1/2 h-full bg-white rounded-full duration-300 ${
+                 <div
+                  className={`button aspect-square z-50 border-[3px]  border-gray-300 absolute top-1/2 -translate-y-1/2 h-full  rounded-full duration-300  ${
                     darkMode
-                      ? "bg-blue-500 right-0"
+                      ? "bg-primary right-0"
                       : "bg-gray-400 right-full translate-x-full"
                   }`}
                 ></div>
@@ -84,33 +86,37 @@ const Navbar = () => {
           >
             <IoMenu />
           </div>
-          <div className="hidden sm:flex gap-x-4 items-center">
-            <div className="english flex items-center gap-x-2">
+          <div className="btn relative hidden sm:flex">
+            <div onClick={() => setSettings(!settings)} >
+              <FaGear className="text-xl" />
+            </div>
+          </div>
+          <div className={`hidden sm:flex flex-col absolute right-0 top-full -translate-y-1/4 gap-x-4 gap-y-2 bg-black/60 rounded p-4 text !backdrop-blur-sm duration-300 ${settings ? "visible opacity-100" : "invisible opacity-0"}`}>
+            <div className="english flex justify-between items-center gap-x-2 text-white">
               <p>English</p>
               <button
                 onClick={() => dispatch(setEnglish())}
-                className="body w-10 aspect-[2/1] rounded-full bg-gray-300 relative z-40"
+                className="body w-11 aspect-[2/1] rounded-full bg-gray-300 relative z-40"
               >
                 <div
-                  className={`button aspect-square z-50 border-2 border-gray-300 absolute top-1/2 -translate-y-1/2 h-full bg-white rounded-full duration-300 ${
+                  className={`button aspect-square z-50 border-[3px]  border-gray-300 absolute top-1/2 -translate-y-1/2 h-full  rounded-full duration-300 text-[10px] grid place-content-center ${
                     english
-                      ? "bg-green-500 right-0"
+                      ? "bg-primary right-0"
                       : "bg-gray-400 right-full translate-x-full"
                   }`}
-                ></div>
+                >  </div>
               </button>
             </div>
-
-            <div className="darkMode flex items-center gap-x-2 ">
+            <div className="darkMode flex justify-between items-center gap-x-2 text-white ">
               <p>Dark Mode</p>
               <button
                 onClick={() => dispatch(toggleTheme())}
-                className="body w-10 aspect-[2/1] rounded-full bg-gray-300 relative z-40"
+                className="body w-11 aspect-[2/1] rounded-full bg-gray-300 relative z-40"
               >
                 <div
-                  className={`button aspect-square z-50 border-2 border-gray-300 absolute top-1/2 -translate-y-1/2 h-full bg-white rounded-full duration-300 ${
+                  className={`button aspect-square z-50 border-[3px] border-gray-300 absolute top-1/2 -translate-y-1/2 h-full  rounded-full duration-300 ${
                     darkMode
-                      ? "bg-blue-500 right-0"
+                      ? "bg-primary right-0"
                       : "bg-gray-400 right-full translate-x-full"
                   }`}
                 ></div>

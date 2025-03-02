@@ -6,6 +6,8 @@ const Blog = () => {
   let darkMode = useSelector((state) => state.theme.darkMode);
   let english = useSelector((state) => state.language.english);
 
+  
+
   let items = [
     {
       title: {
@@ -56,8 +58,10 @@ const Blog = () => {
           {items.map((item, index) => (
             <div
               key={index}
-              className={`card p-3 md:p-6 rounded flex flex-col justify-between gap-y-8 ${
-                darkMode ? "bg-black text-white" : "bg-white text-black"
+              className={`card p-3 md:p-6 rounded flex border flex-col justify-between gap-y-8 duration-500 ${
+                darkMode
+                  ? "bg-black text-white border-transparent hover:shadow-[0px_0px_70px_2px_rgba(255,255,255,0.1)]"
+                  : "bg-white text-black hover:shadow-[0px_0px_50px_0px_rgba(0,0,0,0.15)] hover:border-transparent"
               }`}
             >
               <div className="text flex flex-col gap-y-3 md:gap-y-5">

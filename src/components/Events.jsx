@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Container from "./layer/Container";
 import Image from "next/image";
@@ -33,6 +33,7 @@ function SamplePrevArrow(props) {
 const Events = () => {
   let darkMode = useSelector((state) => state.theme.darkMode);
   let english = useSelector((state) => state.language.english);
+  let [active, setActive] = useState(0);
 
   const events = [
     {
@@ -136,7 +137,7 @@ const Events = () => {
     dots: false,
     infinite: true,
     autoplay: true,
-    speed: 1000,
+    speed: 500,
     autoplaySpeed: 5000,
     cssEase: "linear",
     slidesToShow: 3,
@@ -160,6 +161,24 @@ const Events = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+          arrows: false,
+          appendDots: (dots) => (
+            <div className="w-full flex items-center justify-center"            >
+              <ul className="w-full flex items-center gap-x-2 justify-center" style={{ margin: "0px" }}> {dots} </ul>
+            </div>
+          ),
+          customPaging: (i) => (
+            <div
+             className={`bg-primary text-transparent w-3 h-3 rounded-full ${active === i ? "bg-primary" : "bg-primary/30"}`}
+            >
+              {i + 1}
+            </div>
+          ),
+          beforeChange: (a, b) => {
+            setActive(b);
+          },
         },
       },
     ],
@@ -183,16 +202,16 @@ const Events = () => {
             : "এখানে আমাদের মাদ্রাসায় অনুষ্ঠিত বিভিন্ন অনুষ্ঠান ও কার্যক্রম রয়েছে।"}
         </p>
 
-        <div className="main gap-2 xl:gap-4 px-2 md:px-5">
+        <div className="main gap-2 xl:gap-4 px-0 md:px-5">
           <div className="slider-container ">
             <Slider {...settings}>
               {events.map((item, index) => (
                 <div
                   key={index}
-                  className=" p-1 sm:p-2 xl:p-3 my-5 !aspect-[415/500] "
+                  className=" p-0 sm:p-2 xl:p-3 my-5 !aspect-[415/500] "
                 >
                   <div
-                    className={`card p-3 !pb-2 md:p-4 lg:p-6 h-full  rounded-md duration-300 flex flex-col gap-y-5 cursor-pointer  ${
+                    className={`card p-3 !pb-2 md:p-4 lg:p-6 h-full  rounded-md duration-300 flex flex-col gap-y-5 cursor-pointer border border-black   ${
                       darkMode
                         ? " bg-black hover:shadow-[0px_0px_70px_2px_rgba(255,255,255,0.1)]"
                         : "hover:shadow-[0px_0px_50px_0px_rgba(0,0,0,0.15)] border hover:border-transparent"
