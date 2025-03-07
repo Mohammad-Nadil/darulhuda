@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Container from "./layer/Container";
+import Slider from "react-slick";
 
 const Blog = () => {
   let darkMode = useSelector((state) => state.theme.darkMode);
   let english = useSelector((state) => state.language.english);
-
-  
+  let [active, setActive] = useState(0);
 
   let items = [
     {
@@ -43,6 +43,61 @@ const Blog = () => {
       },
     },
   ];
+
+  var settings = {
+    arrows: false,
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    autoplaySpeed: 5000,
+    cssEase: "linear",
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    autoplay: true,
+    appendDots: (dots) => (
+      <div className="w-full flex items-center justify-center">
+        <ul
+          className="w-full flex items-center gap-x-2 justify-center"
+          style={{ margin: "0px" }}
+        >
+          {" "}
+          {dots}{" "}
+        </ul>
+      </div>
+    ),
+    customPaging: (i) => (
+      <div
+        className={`bg-primary text-transparent w-3 h-3 rounded-full ${
+          active === i ? "bg-primary" : "bg-primary/30"
+        }`}
+      >
+        {i + 1}
+      </div>
+    ),
+    beforeChange: (a, b) => {
+      setActive(b);
+    },
+    responsive: [
+      {
+        breakpoint: 1050,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 415,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   return (
     <div>
       <Container
@@ -54,33 +109,38 @@ const Blog = () => {
           </h1>
           <p className="text-primary">{english ? "Wisdom" : "জ্ঞান"}</p>
         </div>
-        <div className="main grid grid-cols-1 lg:grid-cols-3 gap-4">
-          {items.map((item, index) => (
-            <div
-              key={index}
-              className={`card p-3 md:p-6 rounded flex border flex-col justify-between gap-y-8 duration-500 ${
-                darkMode
-                  ? "bg-black text-white border-transparent hover:shadow-[0px_0px_70px_2px_rgba(255,255,255,0.1)]"
-                  : "bg-white text-black hover:shadow-[0px_0px_50px_0px_rgba(0,0,0,0.15)] hover:border-transparent"
-              }`}
-            >
-              <div className="text flex flex-col gap-y-3 md:gap-y-5">
-                <p className="title text-2xl md:text-3xl font-semibold">
-                  {english ? item.title.english : item.title.bangla}
-                </p>
-                <h2 className="description  md:text-lg text-opacity-70">
-                  {english ? item.description.english : item.description.bangla}
-                </h2>
-              </div>
-              <div className="btn">
-                <button
-                  className={`md:mt-4 px-4 py-1.5 md:py-2 rounded duration-300 text-black bg-primary hover:bg-opacity-70 hover:text-white `}
+        <div className="main ">
+          <Slider {...settings}>
+            {items.map((item, index) => (
+              <div key={index} className="p-2">
+                <div
+                  className={`card p-3 md:p-6 rounded flex border flex-col justify-between gap-y-3 duration-500 !aspect-[5/3.75] h-full ${
+                    darkMode
+                      ? "bg-black text-white border-transparent hover:shadow-[0px_0px_70px_2px_rgba(255,255,255,0.1)]"
+                      : "bg-white text-black hover:shadow-[0px_0px_50px_0px_rgba(0,0,0,0.15)] hover:border-transparent"
+                  }`}
                 >
-                  {english ? "Read More" : "আরও পড়ুন"}
-                </button>
+                  <div className="text flex !h-3/4 flex-col gap-y-3 md:gap-y-5 overflow-y-hidden">
+                    <p className="title text-2xl md:text-3xl font-semibold">
+                      {english ? item.title.english : item.title.bangla}
+                    </p>
+                    <h2 className="description  md:text-lg text-opacity-70">
+                      {english
+                        ? item.description.english
+                        : item.description.bangla}
+                    </h2>
+                  </div>
+                  <div className="btn  !h-1/4">
+                    <button
+                      className={`md:mt-4 px-4 py-1.5 md:py-2 rounded duration-300 text-black bg-primary hover:bg-opacity-70 hover:text-white `}
+                    >
+                      {english ? "Read More" : "আরও পড়ুন"}
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </Slider>
         </div>
       </Container>
     </div>

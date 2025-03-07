@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Container from "./layer/Container";
 import { useSelector } from "react-redux";
@@ -6,13 +7,13 @@ import first from "../assets/firstLong.png";
 import second from "../assets/second.png";
 import third from "../assets/third.png";
 
-const About = () => {
+const About = ({ className }) => {
   let english = useSelector((state) => state.language.english);
   let darkMode = useSelector((state) => state.theme.darkMode);
   return (
     <div>
       <Container
-        className={` flex flex-col-reverse gap-y-10 xl:flex-row gap-x-6 items-center py-6 md:py-12`}
+        className={` flex flex-col-reverse gap-y-10 xl:flex-row gap-x-6 items-center py-6 md:py-12 ${className} `}
       >
         <div className="gallery w-full xl:w-1/2  gap-2 gap-y-5 grid grid-cols-2 grid-rows-2 xl:!aspect-square ">
           <div className="first col-span-1 row-span-2 !aspect-[1/2.05]  ">
@@ -37,7 +38,7 @@ const About = () => {
             />
           </div>
         </div>
-        <div className="main xl:w-1/2 flex flex-col gap-y-3 md:gap-y-3.5">
+        <a href="/about" className="main xl:w-1/2 flex flex-col gap-y-3 md:gap-y-3.5 ">
           <p className="text-xl text-primary !m-0">
             {english ? "About" : " পরিচিতি "}
           </p>
@@ -67,7 +68,7 @@ The madrasa’s core focus is on the teachings of the Holy Quran, Hadith, and ot
 
 `}
           </h2>
-        </div>
+        </a>
       </Container>
     </div>
   );

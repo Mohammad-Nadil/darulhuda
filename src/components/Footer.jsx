@@ -1,3 +1,4 @@
+"use client";
 import Container from "@/components/layer/Container";
 import React from "react";
 import { FaMapMarkerAlt, FaPhone } from "react-icons/fa";
@@ -6,7 +7,7 @@ import { useSelector } from "react-redux";
 const Footer = () => {
   let english = useSelector((state) => state.language.english);
   return (
-    <footer className=" pt-20 md:pt-24 lg:pt-32 ">
+    <footer className="  ">
       <div className="bg-primary">
         <Container
           className={` py-3 md:py-6 flex flex-col sm:flex-row lg:flex-col xl:flex-row justify-between sm:items-end lg:items-center xl:items-center gap-y-5 `}
@@ -46,7 +47,7 @@ const Footer = () => {
                 HTML Codex
               </a>
             </div>
-            <div className="developBy flex items-center gap-x-2">
+            <div className="developBy flex items-center gap-x-2 cursor-pointer">
               <p>Develop By</p>
               <a
                 className="hidden xl:flex"

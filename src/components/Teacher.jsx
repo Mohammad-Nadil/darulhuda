@@ -125,7 +125,7 @@ const Teacher = () => {
   return (
     <div>
       <Container
-        className={` pt-20 md:pt-24 lg:pt-32 flex-col gap-y-10 sm:gap-y-20 flex `}
+        className={` py-20 md:py-24 lg:py-32 flex-col gap-y-10 sm:gap-y-20 flex `}
       >
         <div className="head flex flex-col  md:gap-y-5">
           <p className="title text-xl text-primary text-center">
